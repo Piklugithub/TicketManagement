@@ -1,16 +1,22 @@
 import React from 'react';
 import './Header.css'; // external CSS for styling
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import logo from './images/TicketManage_Icon.png'; // import app icon
 
-const Header = () => {
+const Header = ({ toggleSidebar }) => {
   const user = JSON.parse(localStorage.getItem('user')) || {
     fullName: 'Guest',
-    profilePicture: 'https://via.placeholder.com/40'
+    profilePicture: 'https://via.placeholder.com/40',
   };
 
   return (
     <header className="header">
       <div className="header-left">
-        <img src="/images/TicketManage_Icon.png" alt="App Icon" className="app-icon" />
+        <button className="menu-button" onClick={toggleSidebar}>
+          <FontAwesomeIcon icon={faBars} />
+        </button>
+        <img src={logo} alt="App Icon" className="app-icon" />
       </div>
 
       <div className="header-center">
