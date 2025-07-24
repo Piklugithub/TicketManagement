@@ -1,0 +1,48 @@
+.ticket-table-section {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-top: 1rem;
+}
+
+.modern-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.modern-table th, .modern-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.modern-table th {
+  background-color: #f8f9fa;
+}
+.priority-cell {
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem;
+  border-radius: 6px;
+  text-align: center;
+  width: 100px;
+}
+
+/* Priority-based colors */
+.priority-cell.high {
+  background-color: #ffc107; /* Amber */
+}
+
+.priority-cell.critical {
+  background-color: #dc3545; /* Red */
+}
+
+.priority-cell.medium {
+  background-color: #17a2b8; /* Teal */
+}
+
+.priority-cell.low {
+  background-color: #28a745; /* Green */
+}

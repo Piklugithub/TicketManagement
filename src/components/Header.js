@@ -13,9 +13,12 @@ const Header = ({ toggleSidebar }) => {
   return (
     <header className="header">
       <div className="header-left">
-        <button className="menu-button" onClick={toggleSidebar}>
+        {/* <button className="menu-button" onClick={toggleSidebar}>
           <FontAwesomeIcon icon={faBars} />
-        </button>
+        </button> */}
+         <button id="toggleSidebar" className="btn btn-sm btn-outline-light me-3" onClick={toggleSidebar}>
+           <FontAwesomeIcon icon={faBars} />
+         </button>
         <img src={logo} alt="App Icon" className="app-icon" />
       </div>
 

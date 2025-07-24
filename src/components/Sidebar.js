@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faTachometerAlt, faTasks, faClipboardList, faPlusCircle, faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faTachometerAlt, faTags, faBoxes, faWarehouse, faTasks, faClipboardList, faPlusCircle, faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import './Sidebar.css';
 
 const Sidebar = ({ isOpen, onClose }) => {
@@ -22,6 +22,7 @@ const Sidebar = ({ isOpen, onClose }) => {
     </div>
   );
 };
+
 
 
 export default Sidebar;

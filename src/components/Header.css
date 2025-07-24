@@ -1,11 +1,33 @@
 .header {
+   position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px; /* or your desired height */
+  background-color: #2c3e50; /* dark blue-gray */
+  color: #ffffff; /* Or any background to avoid transparency */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  z-index: 1000; /* Make sure it's above other content */
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 10px 25px;
-  background-color: #343a40;
+  padding: 0 20px;
+}
+#toggleSidebar{
+  background-color: transparent;
+  font-size: large;
+  border: thin solid #fff;
   color: #fff;
-  height: 45px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 0.375rem;
+}
+#toggleSidebar:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* subtle modern effect */
+  color: #ffffff; /* keep text white */
+  text-decoration: none;
 }
 
 .header-left,
@@ -16,8 +38,8 @@
 }
 
 .app-icon {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
 }
 
 .app-title {

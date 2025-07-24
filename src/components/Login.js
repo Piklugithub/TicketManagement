@@ -2,12 +2,14 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
+import ToastMessage from './ToastMessage';
+import { useToast } from './ToastContext';
 import axios from 'axios';
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const navigate = useNavigate(); // Hook for navigation
-
+  const { showToast } = useToast();
   const handleChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -27,21 +29,21 @@ const LoginForm = () => {
         // Expected `data` contains: fullName, profilePicture (base64), etc.
         const user = {
           fullName: data.fullName,
-          profilePicture: data.profilePictureBase64, // base64 string from backend
+          profilePicture: `data:image/png;base64,${data.profilePictureBase64}`, // base64 string from backend
         };
 
         localStorage.setItem('user', JSON.stringify(user));
 
-        alert('Login successful');
+        showToast('Login successful', 'success');
 
         // Redirect to dashboard page
-        navigate('/dashboard');
+       setTimeout(() => navigate('/dashboard'), 3000);
       } else {
-        alert('Login failed');
+        showToast('Login failed', 'error');
       }
     } catch (error) {
       console.error('Login error:', error);
-      alert('An error occurred during login.');
+      showToast('An error occurred during login.', 'error');
     }
   };
 
@@ -49,7 +51,7 @@ const LoginForm = () => {
     <form onSubmit={handleSubmit}>
       <input type="email" name="email" placeholder="Email" required onChange={handleChange} />
       <input type="password" name="password" placeholder="Password" required onChange={handleChange} />
-      <button type="submit">Login</button>
+      <button type="submit">Login</button>     
     </form>
   );
 };

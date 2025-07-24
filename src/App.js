@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'r
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import AuthPage from './components/AuthPage';  // Your login/register wrapper
-import Dashboard from './components/Dashboard'; // You’ll create this
+import Dashboard from './components/Dashboard';
+import { ToastProvider } from './components/ToastContext'; // You’ll create this
 import './App.css';
 
 const AppLayout = () => {
@@ -17,7 +18,7 @@ const AppLayout = () => {
     <>
       {!hideHeader && <Header toggleSidebar={toggleSidebar} />}
       {!hideHeader && <Sidebar isOpen={isSidebarOpen} />}
-      <div style={{ marginTop: '60px', marginLeft: isSidebarOpen ? '220px' : '0', transition: 'margin-left 0.3s' }}>
+      <div style={{ marginTop: hideHeader ? '0' : '60px', marginLeft: isSidebarOpen ? '220px' : '0', transition: 'margin-left 0.3s' }}>
         <Routes>
           <Route path="/AuthPage" element={<AuthPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
@@ -31,9 +32,11 @@ const AppLayout = () => {
 
 function App() {
   return (
-    <Router>
-      <AppLayout />
-    </Router>
+    <ToastProvider>
+      <Router>
+        <AppLayout />
+      </Router>
+    </ToastProvider>
   );
 }
 
