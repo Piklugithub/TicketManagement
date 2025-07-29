@@ -28,8 +28,8 @@ const LoginForm = () => {
 
         // Expected `data` contains: fullName, profilePicture (base64), etc.
         const user = {
-          fullName: data.fullName,
-          profilePicture: `data:image/png;base64,${data.profilePictureBase64}`, // base64 string from backend
+          fullName: data.user.fullName,
+          profilePicture: `data:image/png;base64,${data.user.profilePictureBase64}`, // base64 string from backend
         };
 
         localStorage.setItem('user', JSON.stringify(user));

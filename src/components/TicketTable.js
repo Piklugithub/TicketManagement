@@ -23,6 +23,7 @@ const TicketTable = ({ tickets, status }) => {
             <th>Status</th>
             <th>Created By</th>
             <th>Assigned To</th>
+            <th>Assigned Group</th>
             <th>Created At</th>
           </tr>
         </thead>
@@ -34,7 +35,8 @@ const TicketTable = ({ tickets, status }) => {
               <td className={`priority-cell ${ticket.priority.toLowerCase()}`}>{ticket.priority}</td>
               <td>{ticket.status}</td>
               <td>{ticket.createdBy}</td>
-              <td>{ticket.assignedTo}</td>
+              <td>{ticket.assigmentTo}</td>
+              <td>{ticket.group}</td>
               <td>{new Date(ticket.createdAt).toLocaleString()}</td>
             </tr>
           ))}
