@@ -9,7 +9,7 @@ const Dashboard = () => {
     active: 0,
     resolved: 0,
     onHold: 0,
-    queued: 0
+    open: 0
   });
   const [selectedStatus, setSelectedStatus] = useState(null);
   const [ticketList, setTicketList] = useState([]);
@@ -24,12 +24,12 @@ const Dashboard = () => {
           active: result.data.active,
           resolved: result.data.resolved,
           onHold: result.data.onHold,
-          queued: result.data.queued
+          open: result.data.open
         });
       })
       .catch(err => {
         console.error('Failed to load ticket stats:', err);
-        setTicketStats({ active: 5, resolved: 10, onHold: 2, queued: 1 });
+        setTicketStats({ active: 5, resolved: 10, onHold: 2, open: 1 });
       });
   }, []);
   const handleCardClick = (status) => {
@@ -44,34 +44,38 @@ const Dashboard = () => {
   };
 
   return (
-  <div className="dashboard-container">
-    <h2>Welcome, {user.fullName}!</h2>
-    <div className="dashboard-cards">
-      <div className="card card-active" onClick={() => handleCardClick('Active')}>
-        <FontAwesomeIcon icon={faTicketAlt} className="card-icon icon-blue" />
-        <h3>Active Tickets</h3>
-        <p>{ticketStats.active}</p>
-      </div>
-      <div className="card card-resolved" onClick={() => handleCardClick('Resolved')}>
-        <FontAwesomeIcon icon={faCheckCircle} className="card-icon icon-green" />
-        <h3>Resolved Tickets</h3>
-        <p>{ticketStats.resolved}</p>
-      </div>
-      <div className="card card-onhold" onClick={() => handleCardClick('On Hold')}>
-        <FontAwesomeIcon icon={faPauseCircle} className="card-icon icon-yellow" />
-        <h3>On Hold Tickets</h3>
-        <p>{ticketStats.onHold}</p>
-      </div>
-      <div className="card card-queued" onClick={() => handleCardClick('Queued')}>
-        <FontAwesomeIcon icon={faClock} className="card-icon icon-gray" />
-        <h3>Queued Tickets</h3>
-        <p>{ticketStats.queued}</p>
-      </div>
+  <div className="custom-dashboard-container">
+  <h2 className="dashboard-heading">Welcome, {user.fullName}!</h2>
+  <div className="custom-dashboard-cards">
+    <div className="custom-card custom-card-active" onClick={() => handleCardClick('Active')}>
+      <FontAwesomeIcon icon={faTicketAlt} className="custom-card-icon icon-blue" />
+      <h3>Active Tickets</h3>
+      <p>{ticketStats.active}</p>
     </div>
-    {selectedStatus && (
-      <TicketTable tickets={ticketList} status={selectedStatus} />
-    )}
+
+    <div className="custom-card custom-card-resolved" onClick={() => handleCardClick('Resolved')}>
+      <FontAwesomeIcon icon={faCheckCircle} className="custom-card-icon icon-green" />
+      <h3>Resolved Tickets</h3>
+      <p>{ticketStats.resolved}</p>
+    </div>
+
+    <div className="custom-card custom-card-onhold" onClick={() => handleCardClick('On Hold')}>
+      <FontAwesomeIcon icon={faPauseCircle} className="custom-card-icon icon-yellow" />
+      <h3>On Hold Tickets</h3>
+      <p>{ticketStats.onHold}</p>
+    </div>
+
+    <div className="custom-card custom-card-queued" onClick={() => handleCardClick('Open')}>
+      <FontAwesomeIcon icon={faClock} className="custom-card-icon icon-gray" />
+      <h3>Queued Tickets</h3>
+      <p>{ticketStats.open}</p>
+    </div>
   </div>
+
+  {selectedStatus && (
+    <TicketTable tickets={ticketList} status={selectedStatus} />
+  )}
+</div>
 );
 };
 

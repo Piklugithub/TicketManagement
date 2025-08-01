@@ -1,15 +1,19 @@
-.dashboard-container {
+.custom-dashboard-container {
   padding: 30px;
   font-family: 'Segoe UI', sans-serif;
 }
 
-.dashboard-cards {
+.dashboard-heading {
+  margin-bottom: 30px;
+}
+
+.custom-dashboard-cards {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
 }
 
-.card {
+.custom-card {
   position: relative;
   flex: 1 1 250px;
   background: #fff;
@@ -19,14 +23,14 @@
   overflow: hidden;
   color: #333;
   transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
-.card:hover {
+.custom-card:hover {
   transform: translateY(-5px);
 }
 
-/* Icon in the background */
-.card-icon {
+.custom-card-icon {
   position: absolute;
   top: 15px;
   right: 15px;
@@ -35,40 +39,40 @@
   z-index: 0;
 }
 
-.card h3,
-.card p {
+.custom-card h3,
+.custom-card p {
   position: relative;
   z-index: 1;
   margin: 0;
 }
+.custom-card h3 {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
 
-/* Card color variants */
-.card-active {
+/* Color Variants */
+.custom-card-active {
   border-left: 6px solid #007bff;
 }
-
-.card-resolved {
+.custom-card-resolved {
   border-left: 6px solid #28a745;
 }
-
-.card-onhold {
+.custom-card-onhold {
   border-left: 6px solid #ffc107;
 }
-.card-queued {
+.custom-card-queued {
   border-left: 6px solid #6c757d;
 }
+
 .icon-blue {
   color: #007bff;
 }
-
 .icon-green {
   color: #28a745;
 }
-
 .icon-yellow {
   color: #ffc107;
 }
-
 .icon-gray {
   color: #6c757d;
 }

@@ -14,6 +14,7 @@ const TicketTable = ({ tickets, status }) => {
   return (
     <div className="ticket-table-section">
       <h4>{status} Tickets</h4>
+      <div className="table-scroll-wrapper">
       <table className="modern-table">
         <thead>
           <tr>
@@ -42,6 +43,7 @@ const TicketTable = ({ tickets, status }) => {
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 };

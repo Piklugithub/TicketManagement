@@ -5,13 +5,25 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   margin-top: 1rem;
 }
-
+.table-scroll-wrapper {
+  max-height: 350px; /* Set desired height */
+  overflow-y: auto;
+  overflow-x: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
 .modern-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
+  min-width: 900px;
 }
-
+.modern-table thead {
+  position: sticky;
+  top: 0;
+  background-color: #f8f9fa;
+  z-index: 1;
+}
 .modern-table th, .modern-table td {
   padding: 0.75rem;
   text-align: left;
