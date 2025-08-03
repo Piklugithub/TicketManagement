@@ -5,7 +5,8 @@ import Sidebar from './components/Sidebar';
 import AuthPage from './components/AuthPage';  // Your login/register wrapper
 import Dashboard from './components/Dashboard';
 import CreateTicket from './components/CreateTicket'; // Your ticket creation component
-import { ToastProvider } from './components/ToastContext'; // You’ll create this
+import { ToastProvider } from './components/ToastContext';
+import MyRequest from './components/MyRequest'; // You’ll create this
 import './App.css';
 
 const AppLayout = () => {
@@ -54,6 +55,7 @@ const AppLayout = () => {
           <Route path="/AuthPage" element={<AuthPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/create-ticket" element={<CreateTicket />} />
+          <Route path="/my-requests" element={<MyRequest />} />
           {/* Add other routes here */}
           <Route path="*" element={<Navigate to="/AuthPage" />} />
         </Routes>
