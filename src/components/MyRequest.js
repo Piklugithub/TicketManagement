@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import EditTicketModal from './EditTicketModal';
+import { useNavigate } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 
 const userDetails = JSON.parse(localStorage.getItem('user')) || { fullName: 'Guest' };
 const MyRequestsPage = ({ user }) => {
   const [tickets, setTickets] = useState([]);
   const [searchId, setSearchId] = useState("");
+  const navigate = useNavigate();
 
   const fetchTickets = async (ticketId = "") => {
     try {
@@ -19,11 +24,13 @@ const MyRequestsPage = ({ user }) => {
       console.error("Error fetching tickets:", err);
     }
   };
-
   useEffect(() => {
     fetchTickets(); // fetch all on load
   }, []);
 
+  const openEditPage = (ticketId) => {
+    navigate(`/edit-ticket/${ticketId}`);
+  };
   const handleSearch = (e) => {
     e.preventDefault();
     fetchTickets(searchId); // search on form submit
@@ -65,9 +72,9 @@ const MyRequestsPage = ({ user }) => {
             tickets.map((ticket) => (
               <tr key={ticket.ticketId}>
                 <td>
-                  <a href={`/edit-ticket/${ticket.ticketId}`} className="text-decoration-none">
+                  <button className="btn btn-link p-0 text-decoration-none" onClick={() => openEditPage(ticket.ticketId)}>
                     #{ticket.ticketId}
-                  </a>
+                  </button>
                 </td>
                 <td>{ticket.title}</td>
                 <td>{ticket.status}</td>

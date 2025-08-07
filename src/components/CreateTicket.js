@@ -57,38 +57,6 @@ const CreateTicket = () => {
   };
 
   return (
-    // <div className="ticket-form">
-    //   <h3>Create Ticket</h3>
-    //   {successMsg && <p className="success">{successMsg}</p>}
-    //   <form onSubmit={handleSubmit}>
-    //     <input name="title" placeholder="Title" required onChange={handleChange} value={formData.title} />
-    //     <textarea name="description" placeholder="Description" required onChange={handleChange} value={formData.description} />
-    //     <select name="status" onChange={handleChange} value={formData.status}>
-    //       <option>Open</option>
-    //       <option>In Progress</option>
-    //       <option>Closed</option>
-    //     </select>
-    //     <select name="priority" onChange={handleChange} value={formData.priority}>
-    //       <option>Low</option>
-    //       <option>Medium</option>
-    //       <option>High</option>
-    //       <option>Critical</option>
-    //     </select>
-    //     <select name="groupId" onChange={handleChange} value={formData.groupId}>
-    //       <option value="">Select Group</option>
-    //       {groups.map(group => (
-    //         <option key={group.groupId} value={group.groupId}>{group.groupName}</option>
-    //       ))}
-    //     </select>
-    //     <select name="assignedTo" onChange={handleChange} value={formData.assignedTo}>
-    //       <option value="">Assign To</option>
-    //       {members.map(member => (
-    //         <option key={member.memberId} value={member.memberId}>{member.memberName}</option>
-    //       ))}
-    //     </select>
-    //     <button type="submit">Create Ticket</button>
-    //   </form>
-    // </div>
     <div className="container mt-5">
       <div className="card shadow-lg rounded-4">
         <div className="card-body p-5">
