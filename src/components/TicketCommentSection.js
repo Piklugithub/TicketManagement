@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { FaFilePdf, FaFileWord, FaFileExcel, FaFileImage, FaFileAlt, FaDownload } from "react-icons/fa";
 import axios from 'axios';
 
 // const TicketCommentSection = ({ ticketId, userId }) => {
@@ -100,38 +101,58 @@ const TicketCommentSection = ({ ticketId, userId }) => {
       console.error("Error submitting comment:", error);
     }
   };
-
+  const getFileIcon = (fileType) => {
+    if (fileType.includes("pdf")) return <FaFilePdf className="text-danger me-2" size={20} />;
+    if (fileType.includes("word") || fileType.includes("doc")) return <FaFileWord className="text-primary me-2" size={20} />;
+    if (fileType.includes("excel") || fileType.includes("spreadsheet")) return <FaFileExcel className="text-success me-2" size={20} />;
+    if (fileType.includes("image")) return <FaFileImage className="text-warning me-2" size={20} />;
+    return <FaFileAlt className="text-secondary me-2" size={20} />; // default file icon
+  };
+  const isImageFile = (fileType) => {
+    if (!fileType) return false;
+    const ext = fileType.toLowerCase();
+    return [".png", ".jpg", ".jpeg", ".gif", ".bmp", ".webp", ".svg"].includes(ext);
+  };
   const renderAttachments = (attachments) => {
   if (!attachments || attachments.length === 0) return null;
 
   return attachments.map((attachment, index) => {
-    const { filePath, fileType } = attachment;
-    const fileName = filePath.split('\\').pop();
-
-    if (fileType.startsWith('image/')) {
+    const { filePath, fileType,fileName } = attachment;
+    if (isImageFile(fileType)) {
       return (
         <img
           key={index}
           src={`https://localhost:7289/${filePath}`}
           alt="Attachment"
           className="img-fluid mt-2"
-          style={{ maxWidth: '200px', borderRadius: '10px' }}
+          style={{ maxWidth: '500px', borderRadius: '10px' }}
         />
       );
+    } 
+    else 
+      {
+       return (
+         <div
+           key={index}
+           className="d-flex align-items-center justify-content-between border p-2 rounded mb-2"
+           style={{ background: "#f9f9f9" }}
+         >
+          <div className="d-flex align-items-center">
+            {getFileIcon(fileType)}
+            <span className="fw-bold">{fileName}</span>
+          </div>
+          <a
+            href={`https://localhost:7289/${filePath}`}
+            download
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-outline-primary btn-sm d-flex align-items-center"
+          >
+            <FaDownload className="me-1" /> Download
+          </a>
+        </div>
+      );
     }
-
-    return (
-      <div className="mt-2" key={index}>
-        <a
-          href={`https://localhost:7289/${filePath}`}
-          download
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          📎 Download: {fileName}
-        </a>
-      </div>
-    );
   });
 };
 
