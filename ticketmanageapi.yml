@@ -5,7 +5,7 @@ trigger:
       - main   # adjust as per your branch
 
 pool:
-  vmImage: 'windows-latest'
+  name: 'Default'
 
 variables:
   buildConfiguration: 'Release'
